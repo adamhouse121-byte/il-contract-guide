@@ -56,7 +56,7 @@ document.getElementById('contactForm').addEventListener('submit', function(e){
     const name = encodeURIComponent(data.get('name') || '');
     const subj = encodeURIComponent(data.get('subject') || 'Contract question');
     const msg = encodeURIComponent(data.get('message') || '');
-    const mailto = `mailto:you@example.com?subject=${subj}&body=From:%20${name}%20%3C${email}%3E%0A%0A${msg}`;
+    const mailto = `mailto:adamhouse121@gmail.com?subject=${subj}&body=From:%20${name}%20%3C${email}%3E%0A%0A${msg}`;
     window.location.href = mailto;
     alert('Opening your email app to send the message. To enable direct submits, set your Formspree ID in contact.html.');
   }
