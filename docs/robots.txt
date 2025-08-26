@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://adamhouse121-byte.github.io/il-contract-guide/sitemap.xml
