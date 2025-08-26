@@ -10,3 +10,19 @@ document.addEventListener('click', (e)=>{
     history.replaceState(null, '', '#'+id);
   }
 });
+
+;(() => {
+  const share = document.getElementById('share');
+  if(!share) return;
+  share.addEventListener('click', (e) => {
+    e.preventDefault();
+    const url = window.location.href;
+    if (navigator.share) {
+      navigator.share({title: document.title, url}).catch(()=>{});
+    } else if (navigator.clipboard) {
+      navigator.clipboard.writeText(url).then(() => alert('Link copied!'));
+    } else {
+      prompt('Copy this link:', url);
+    }
+  });
+})();
