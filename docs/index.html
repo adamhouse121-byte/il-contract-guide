@@ -1,0 +1,73 @@
+<!DOCTYPE html><html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Illinois Multi-Board 8.0 — Plain-English Guide</title><meta name="description" content="Illinois Multi-Board 8.0 — Plain-English Guide">
+<link rel="stylesheet" href="assets/style.css"></head><body>
+<header><div class="container nav">
+<a href="index.html">Contract Guide</a>
+<a href="attorney-review.html">Attorney Review</a>
+<a href="fixtures.html">Fixtures</a>
+<a href="inspections.html">Inspections</a>
+<span style="flex:1"></span>
+<a class="btn" href="assets/MultiBoard8.0.pdf" target="_blank" rel="noopener">Download Official MB 8.0 (PDF)</a>
+</div></header>
+<main class="container hero"><span class="badge">General info — not legal advice</span><h1>Illinois Multi-Board Residential Purchase Contract 8.0 — Explained in Plain English</h1>
+<p class="small notice">Educational purposes only — not legal advice. Contracts are binding. Confirm with your attorney and the exact form you’re using.</p>
+<div class="grid grid-2"><article>
+<h2>Quick Links</h2>
+<ul>
+<li><a href="earnest-money.html">Earnest Money — refunds & disputes</a></li>
+<li><a href="appraisal-low.html">Low Appraisal — options</a></li>
+<li><a href="rentback.html">Rent-Back — template</a></li>
+<li><a href="home-sale-contingency.html">Home-Sale Contingency — kick-out</a></li>
+<li><a href="escrowee-notice.html">Escrowee & Notices — plain English</a></li>
+<li><a href="prorations-taxes.html">Taxes & Prorations — how it’s split</a></li>
+<li><a href="brokerage-comp.html">Seller Contribution to Buyer’s Brokerage</a></li>
+<li><a href="condo-hoa-docs.html">Condo/HOA Docs — what to review</a></li>
+<li><a href="title-survey.html">Title & Survey — “clean” title</a></li>
+</ul>
+<h2 id="toc">Table of contents</h2>
+<p>See the full clause list and short summaries on the page (scroll).</p>
+</article><aside><div class="card" id="deadline-calculator">
+<h3>Build Your Key Dates Timeline</h3>
+<p class="small">Enter your <b>Acceptance Date</b> and tweak the defaults. We’ll estimate deadlines. Always confirm with your contract/attorney.</p>
+<div class="grid" style="grid-template-columns:1fr 1fr; gap:12px">
+<label>Acceptance Date<br><input type="date" id="acc"></label>
+<label>Attorney Review (business days)<br><input type="number" id="att" value="5" min="0"></label>
+<label>Inspection Window (business days)<br><input type="number" id="ins" value="7" min="0"></label>
+<label>Earnest Due (business days)<br><input type="number" id="emn" value="2" min="0"></label>
+<label>Loan App Due (business days)<br><input type="number" id="lad" value="5" min="0"></label>
+<div><label>Loan Commitment (days)<br><input type="number" id="lcd" value="28" min="0"></label>
+<label style="display:inline-flex;gap:6px;align-items:center;margin-top:8px;font-size:14px;color:#334155">
+<input type="checkbox" id="lcbd"> Count as business days</label></div></div>
+<div style="display:flex; gap:10px; margin-top:12px">
+<button id="calcBtn" class="btn">Calculate</button>
+<button id="copyBtn" class="btn-outline">Copy summary</button></div>
+<div id="out" class="keygrid" style="display:none;margin-top:12px"></div>
+<p class="small" style="margin-top:12px">Estimates only. Verify against your contract and with your attorney.</p>
+</div>
+<script>(function(){const fmt=d=>d.toLocaleDateString(undefined,{weekday:'short',month:'short',day:'numeric',year:'numeric'});
+const addBiz=(s,n)=>{const d=new Date(s);let i=0;while(i<n){d.setDate(d.getDate()+1);const w=d.getDay();if(w!==0&&w!==6)i++;}return d;};
+const addCal=(s,n)=>{const d=new Date(s);d.setDate(d.getDate()+n);return d;};
+function compute(){const accStr=document.getElementById('acc').value;if(!accStr){alert('Enter an acceptance date');return null;}
+const A=new Date(accStr+'T12:00:00');const att=+document.getElementById('att').value||0;const ins=+document.getElementById('ins').value||0;
+const emn=+document.getElementById('emn').value||0;const lad=+document.getElementById('lad').value||0;const lcd=+document.getElementById('lcd').value||0;
+const lcbd=document.getElementById('lcbd').checked;const attorneyEnd=addBiz(A,att);const inspectionEnd=addBiz(A,ins);
+const earnestDue=addBiz(A,emn);const loanAppDue=addBiz(A,lad);const loanCommitDue=(lcbd?addBiz(A,lcd):addCal(A,lcd));
+return {{A,att,ins,emn,lad,lcd,lcbd,attorneyEnd,inspectionEnd,earnestDue,loanAppDue,loanCommitDue}};}
+function render(){const r=compute();if(!r)return;const out=document.getElementById('out');out.style.display='grid';
+out.innerHTML=[['Attorney Review ends',r.attorneyEnd,`${{r.att}} business days`],['Inspection deadline',r.inspectionEnd,`${{r.ins}} business days`],
+['Earnest money due',r.earnestDue,`${{r.emn}} business days`],['Loan application due',r.loanAppDue,`${{r.lad}} business days`],
+['Loan commitment due',r.loanCommitDue,`${{r.lcd}} ${{r.lcbd?'business':'calendar'}} days`]].map(([l,d,h])=>
+`<div class="key"><div class="label">${{l}}</div><div class="value">${{fmt(d)}}</div><div class="small">${{h}}</div></div>`).join('');}
+function copy(){const r=compute();if(!r)return;const t=[`Acceptance: ${{fmt(r.A)}}`,`Attorney Review ends: ${{fmt(r.attorneyEnd)}} (${{r.att}} business days)`,
+`Inspection deadline: ${{fmt(r.inspectionEnd)}} (${{r.ins}} business days)`,`Earnest money due: ${{fmt(r.earnestDue)}} (${{r.emn}} business days)`,
+`Loan application due: ${{fmt(r.loanAppDue)}} (${{r.lad}} business days)`,`Loan commitment due: ${{fmt(r.loanCommitDue)}} (${{r.lcd}} ${{r.lcbd?'business':'calendar'}} days)`].join('\n');
+navigator.clipboard.writeText(t).then(()=>{{alert('Timeline copied to clipboard!');}}).catch(()=>{{}});}
+document.getElementById('calcBtn').addEventListener('click',render);
+document.getElementById('copyBtn').addEventListener('click',copy);})();</script>
+<div class="card"><h3>Need help reading your contract?</h3>
+<p class="small">I’ll translate your contract into plain English and flag your key dates. <b>Free for my clients.</b></p>
+<a class="btn" href="#" onclick="alert('Hook this up to your contact form or email link.')">Contact Adam</a>
+</div></aside></div></main>
+<footer><div class="container small">Refers to Multi-Board 8.0. Last updated: 2025-08-26</div></footer>
+<script src="assets/script.js"></script></body></html>
