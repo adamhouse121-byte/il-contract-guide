@@ -4,29 +4,25 @@
 }
 *{box-sizing:border-box}
 html,body{margin:0;padding:0}
-body{
-  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
-  color:var(--text); background:linear-gradient(#fff,#f8fafc 60%);
-  line-height:1.65;
-}
+body{font-family:ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,"Apple Color Emoji","Segoe UI Emoji";
+  color:var(--text); background:linear-gradient(#fff,#f8fafc 60%); line-height:1.65}
 a{color:var(--link); text-decoration:underline}
-a.btn{display:inline-block; text-decoration:none; background:var(--accent); color:#fff; padding:10px 14px; border-radius:12px}
-/* Ensure the header button text is visible even with more specific rules */
-header .nav .btn{ color:#fff !important; text-decoration:none; }
-a.btn:hover{opacity:.9}
+a.btn, a.btn:visited, header .nav .btn, header .nav .btn:visited{ color:#fff !important; text-decoration:none !important; }
+a.btn{display:inline-block; background:var(--accent); padding:10px 14px; border-radius:12px}
+a.btn:hover{opacity:.92}
 .container{max-width:1100px; margin:0 auto; padding:0 16px}
 header{border-bottom:1px solid var(--border); background:linear-gradient(#fff,#f8fafc)}
 header .nav{display:flex; gap:16px; align-items:center; padding:12px 0}
 header .nav a{color:var(--text); text-decoration:none; font-weight:600}
 header .nav a:hover{text-decoration:underline}
 .hero{padding:28px 0}
-h1{font-size: clamp(28px, 4vw, 40px); line-height:1.2; margin:10px 0}
-h2{margin-top:28px; font-size: clamp(20px, 3vw, 28px); line-height:1.25}
-h3{margin-top:22px; font-size: clamp(18px, 2.5vw, 22px)}
+h1{font-size:clamp(28px,4vw,40px); line-height:1.2; margin:10px 0}
+h2{margin-top:28px; font-size:clamp(20px,3vw,28px); line-height:1.25}
+h3{margin-top:22px; font-size:clamp(18px,2.5vw,22px)}
 .badge{display:inline-block; padding:6px 10px; border-radius:999px; background:#f1f5f9; color:#334155; font-size:12px; border:1px solid var(--border)}
 .grid{display:grid; gap:16px}
-.grid-2{grid-template-columns: 1fr; }
-@media(min-width:900px){.grid-2{grid-template-columns: 1fr 340px}}
+.grid-2{grid-template-columns: 1fr;}
+@media(min-width:900px){.grid-2{grid-template-columns:1fr 360px}}
 .card{border:1px solid var(--border); border-radius:16px; padding:16px; background:#fff; box-shadow:0 1px 2px rgba(0,0,0,.04)}
 .toc ol{padding-left: 20px}
 footer{padding:40px 0; border-top:1px solid var(--border); color:var(--muted); font-size:14px; margin-top:40px; background:#fff}
@@ -47,3 +43,7 @@ label{font-size:14px; color:#0f172a}
 .key{border:1px solid var(--border); border-radius:12px; padding:12px; background:#fff}
 .key .label{font-size:12px; color:#64748b; text-transform:uppercase; letter-spacing:.04em}
 .key .value{font-weight:700; margin-top:4px}
+ul.tight>li{margin-bottom:6px}
+.tip{background:#eef2ff; border:1px solid #e0e7ff; padding:10px; border-radius:10px}
+.bad{background:#fff1f2; border:1px solid #ffe4e6; padding:10px; border-radius:10px}
+.good{background:#ecfdf5; border:1px solid #d1fae5; padding:10px; border-radius:10px}
