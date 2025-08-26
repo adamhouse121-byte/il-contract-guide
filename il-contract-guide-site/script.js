@@ -1,0 +1,12 @@
+
+document.addEventListener('click', (e)=>{
+  const a = e.target.closest('a[href^="#"]');
+  if(!a) return;
+  const id = a.getAttribute('href').slice(1);
+  const tgt = document.getElementById(id);
+  if(tgt){
+    e.preventDefault();
+    tgt.scrollIntoView({behavior:'smooth', block:'start'});
+    history.replaceState(null, '', '#'+id);
+  }
+});
